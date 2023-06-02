@@ -18,3 +18,7 @@ Line {
 .root {
     -fx-background-color: #b7b7ff;
 }
+
+.labelerreur {
+    -fx-text-fill: red;
+}
