@@ -56,8 +56,8 @@
         <Label fx:id="labelerreur" styleClass="labelerreur" text=""  GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="8" alignment="CENTER_LEFT"/>
 
         <HBox spacing="20" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="10" alignment="BOTTOM_RIGHT">
-            <Button fx:id="tracerBtn" text="Tracer"/>
-            <Button fx:id="viderBtn" text="Vider" onAction="#onClickVider"/>
+            <Button text="Tracer" onAction="#onClickTracer"/>
+            <Button text="Vider" onAction="#onClickVider"/>
         </HBox>
     </GridPane>
 </HBox>

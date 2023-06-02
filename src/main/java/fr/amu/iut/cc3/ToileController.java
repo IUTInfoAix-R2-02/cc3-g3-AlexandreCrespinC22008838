@@ -13,8 +13,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ToileController implements Initializable {
@@ -41,8 +43,6 @@ public class ToileController implements Initializable {
     private Pane toile;
     @FXML
     private Label labelerreur;
-    @FXML
-    private Button viderBtn;
 
     private Circle point1 = new Circle();
     private Circle point2 = new Circle();
@@ -51,6 +51,8 @@ public class ToileController implements Initializable {
     private Circle point5 = new Circle();
     private Circle point6 = new Circle();
 
+    private ArrayList<Circle> CompArray = new ArrayList();
+    private ArrayList<Line> LigneArray = new ArrayList();
     @FXML
     public void onClickcomp1() {
         double value = 0;
@@ -182,6 +184,36 @@ public class ToileController implements Initializable {
         point4.setRadius(0);
         point5.setRadius(0);
         point6.setRadius(0);
+        for (int i = 0; i < LigneArray.size(); ++i){
+            Line ligne;
+            ligne = LigneArray.get(i);
+            toile.getChildren().remove(ligne);
+        }
+    }
+
+    public void onClickTracer(){
+        CompArray.add(point1);
+        CompArray.add(point2);
+        CompArray.add(point3);
+        CompArray.add(point4);
+        CompArray.add(point5);
+        CompArray.add(point6);
+        for (int i = 0; i < CompArray.size()-1; ++i){
+            Line ligne = new Line();
+            Circle prempoint;
+            Circle deuxpoint;
+            prempoint = CompArray.get(i);
+            deuxpoint = CompArray.get(i+1);
+            if ((prempoint.getCenterX() == 0 && prempoint.getCenterY() == 0) || (deuxpoint.getCenterX() == 0 && deuxpoint.getCenterY() == 0)){
+                break;
+            }
+            ligne.setStartX(prempoint.getCenterX());
+            ligne.setStartY(prempoint.getCenterY());
+            ligne.setEndX(deuxpoint.getCenterX());
+            ligne.setEndY(deuxpoint.getCenterY());
+            LigneArray.add(ligne);
+            toile.getChildren().add(ligne);
+        }
     }
 
     @Override
