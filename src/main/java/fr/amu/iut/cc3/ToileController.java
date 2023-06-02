@@ -7,6 +7,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -39,9 +40,9 @@ public class ToileController implements Initializable {
     @FXML
     private Pane toile;
     @FXML
-    private GridPane gridPane;
-    @FXML
     private Label labelerreur;
+    @FXML
+    private Button viderBtn;
 
     private Circle point1 = new Circle();
     private Circle point2 = new Circle();
@@ -57,14 +58,16 @@ public class ToileController implements Initializable {
         if (comp1.getLength() != 0) {
             value = Double.parseDouble(comp1.getText());
             labelerreur.setText("");
-            isSup20Inf0(value);
+            if (isSup20Inf0(value)){
+                return;
+            }
             axe = 1;
             int x = getXRadarChart(value, axe);
             int y = getYRadarChart(value, axe);
             point1.setCenterX(x);
             point1.setCenterY(y);
             point1.setRadius(5);
-            toile.getChildren().add(point1);
+            toile.getChildren().addAll(point1);
         }
     }
     @FXML
@@ -74,14 +77,16 @@ public class ToileController implements Initializable {
         if (comp2.getLength() != 0) {
             value = Double.parseDouble(comp2.getText());
             labelerreur.setText("");
-            isSup20Inf0(value);
+            if (isSup20Inf0(value)){
+                return;
+            }
             axe = 2;
             int x = getXRadarChart(value, axe);
             int y = getYRadarChart(value, axe);
             point2.setCenterX(x);
             point2.setCenterY(y);
             point2.setRadius(5);
-            toile.getChildren().add(point2);
+            toile.getChildren().addAll(point2);
         }
     }
     @FXML
@@ -91,14 +96,16 @@ public class ToileController implements Initializable {
         if (comp3.getLength() != 0) {
             value = Double.parseDouble(comp3.getText());
             labelerreur.setText("");
-            isSup20Inf0(value);
+            if (isSup20Inf0(value)){
+                return;
+            }
             axe = 3;
             int x = getXRadarChart(value, axe);
             int y = getYRadarChart(value, axe);
             point3.setCenterX(x);
             point3.setCenterY(y);
             point3.setRadius(5);
-            toile.getChildren().add(point3);
+            toile.getChildren().addAll(point3);
         }
     }
     @FXML
@@ -108,14 +115,16 @@ public class ToileController implements Initializable {
         if (comp4.getLength() != 0) {
             value = Double.parseDouble(comp4.getText());
             labelerreur.setText("");
-            isSup20Inf0(value);
+            if (isSup20Inf0(value)){
+                return;
+            }
             axe = 4;
             int x = getXRadarChart(value, axe);
             int y = getYRadarChart(value, axe);
             point4.setCenterX(x);
             point4.setCenterY(y);
             point4.setRadius(5);
-            toile.getChildren().add(point4);
+            toile.getChildren().addAll(point4);
         }
     }
     @FXML
@@ -125,14 +134,16 @@ public class ToileController implements Initializable {
         if (comp5.getLength() != 0) {
             value = Double.parseDouble(comp5.getText());
             labelerreur.setText("");
-            isSup20Inf0(value);
+            if (isSup20Inf0(value)){
+                return;
+            }
             axe = 5;
             int x = getXRadarChart(value, axe);
             int y = getYRadarChart(value, axe);
             point5.setCenterX(x);
             point5.setCenterY(y);
             point5.setRadius(5);
-            toile.getChildren().add(point5);
+            toile.getChildren().addAll(point5);
         }
     }
     @FXML
@@ -142,21 +153,35 @@ public class ToileController implements Initializable {
         if (comp6.getLength() != 0) {
             value = Double.parseDouble(comp6.getText());
             labelerreur.setText("");
-            isSup20Inf0(value);
+            if (isSup20Inf0(value)){
+                return;
+            }
             axe = 6;
             int x = getXRadarChart(value,axe);
             int y = getYRadarChart(value,axe);
             point6.setCenterX(x);
             point6.setCenterY(y);
             point6.setRadius(5);
-            toile.getChildren().add(point6);
+            toile.getChildren().addAll(point6);
         }
     }
 
-    private void isSup20Inf0(double value){
+    private Boolean isSup20Inf0(double value){
         if (value > 20 || value < 0){
             labelerreur.setText("Erreur de saisie : \nLes valeurs doivent être entre 0 et 20");
+            return true;
         }
+        return false;
+    }
+
+    public void onClickVider(){
+        labelerreur.setText("");
+        point1.setRadius(0);
+        point2.setRadius(0);
+        point3.setRadius(0);
+        point4.setRadius(0);
+        point5.setRadius(0);
+        point6.setRadius(0);
     }
 
     @Override
