@@ -14,3 +14,7 @@ Line {
     -fx-stroke: "blue";
     -fx-stroke-width: 2;
 }
+
+.root {
+    -fx-background-color: #b7b7ff;
+}
