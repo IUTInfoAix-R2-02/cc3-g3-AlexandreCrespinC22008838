@@ -69,6 +69,8 @@ public class ToileController implements Initializable {
             point1.setCenterX(x);
             point1.setCenterY(y);
             point1.setRadius(5);
+            update();
+            toile.getChildren().remove(point1);
             toile.getChildren().addAll(point1);
         }
     }
@@ -88,6 +90,8 @@ public class ToileController implements Initializable {
             point2.setCenterX(x);
             point2.setCenterY(y);
             point2.setRadius(5);
+            update();
+            toile.getChildren().remove(point2);
             toile.getChildren().addAll(point2);
         }
     }
@@ -107,6 +111,8 @@ public class ToileController implements Initializable {
             point3.setCenterX(x);
             point3.setCenterY(y);
             point3.setRadius(5);
+            update();
+            toile.getChildren().remove(point3);
             toile.getChildren().addAll(point3);
         }
     }
@@ -126,6 +132,8 @@ public class ToileController implements Initializable {
             point4.setCenterX(x);
             point4.setCenterY(y);
             point4.setRadius(5);
+            update();
+            toile.getChildren().remove(point4);
             toile.getChildren().addAll(point4);
         }
     }
@@ -145,6 +153,8 @@ public class ToileController implements Initializable {
             point5.setCenterX(x);
             point5.setCenterY(y);
             point5.setRadius(5);
+            update();
+            toile.getChildren().remove(point5);
             toile.getChildren().addAll(point5);
         }
     }
@@ -164,6 +174,8 @@ public class ToileController implements Initializable {
             point6.setCenterX(x);
             point6.setCenterY(y);
             point6.setRadius(5);
+            update();
+            toile.getChildren().remove(point6);
             toile.getChildren().addAll(point6);
         }
     }
@@ -184,6 +196,10 @@ public class ToileController implements Initializable {
         point4.setRadius(0);
         point5.setRadius(0);
         point6.setRadius(0);
+        supprimerLigne();
+    }
+
+    public void supprimerLigne(){
         for (int i = 0; i < LigneArray.size(); ++i){
             Line ligne;
             ligne = LigneArray.get(i);
@@ -213,6 +229,22 @@ public class ToileController implements Initializable {
             ligne.setEndY(deuxpoint.getCenterY());
             LigneArray.add(ligne);
             toile.getChildren().add(ligne);
+        }
+        if ((point1.getCenterX() != 0 && point1.getCenterY() != 0) && (point6.getCenterX() != 0 && point6.getCenterY() != 0)){
+            Line ligne = new Line();
+            ligne.setStartX(point1.getCenterX());
+            ligne.setStartY(point1.getCenterY());
+            ligne.setEndX(point6.getCenterX());
+            ligne.setEndY(point6.getCenterY());
+            LigneArray.add(ligne);
+            toile.getChildren().add(ligne);
+        }
+    }
+
+    public void update(){
+        if (LigneArray.size() != 0){
+            supprimerLigne();
+            onClickTracer();
         }
     }
 

@@ -22,3 +22,7 @@ Line {
 .labelerreur {
     -fx-text-fill: red;
 }
+
+TextField {
+    -fx-max-width: 50;
+}
